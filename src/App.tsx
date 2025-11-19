@@ -1,11 +1,18 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./components/layout/Layout";
+import Homepages from "./pages/home/Homepages";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
-    <Layout>
-      <h1 className="text-2xl font-bold">Welcome!</h1>
-      <p>Ini area konten utama.</p>
-    </Layout>
+    <Router>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Homepages />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Layout>
+    </Router>
   );
 }
 

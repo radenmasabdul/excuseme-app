@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import Logo from "../../assets/logo.svg";
 import Sidebar from "./Sidebar";
@@ -9,22 +10,18 @@ interface NavLinkProps {
   href: string;
 }
 
-const NavLink = ({ label, href }: NavLinkProps) => (
-  <a href={href} className="text-black text-sm font-medium cursor-pointer">
-    {label}
-  </a>
-);
-
 interface NavbarProps {
   children?: React.ReactNode;
 }
 
 const Navbar = ({ children }: NavbarProps) => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [showOverlay, setShowOverlay] = useState(false);
 
   const navLinks: NavLinkProps[] = [
-    { id: 1, label: "home", href: "/home" },
+    { id: 1, label: "home", href: "/" },
     { id: 2, label: "support", href: "/support" },
     { id: 3, label: "my account", href: "/account" },
   ];
@@ -39,7 +36,15 @@ const Navbar = ({ children }: NavbarProps) => {
         <div className="flex items-center gap-6">
           <nav className="hidden md:flex items-center gap-8 text-gray-700 text-sm">
             {navLinks.map(link => (
-              <NavLink key={link.id} id={link.id} label={link.label} href={link.href} />
+              <button
+                key={link.id}
+                onClick={() => navigate(link.href)}
+                className={`cursor-pointer ${
+                  location.pathname === link.href ? "font-semibold text-indigo-600" : ""
+                }`}
+              >
+                {link.label}
+              </button>
             ))}
           </nav>
 
@@ -84,8 +89,8 @@ const Navbar = ({ children }: NavbarProps) => {
       {/* main content */}
         <main
           className={`
-            flex-1 transition-all duration-300 bg-amber-200
-            ${isSidebarOpen ? "md:translate-x-30" : "md:translate-x-0"}
+            flex-1 transition-all duration-300
+            ${isSidebarOpen ? "md:translate-x-0" : "md:translate-x-0"}
           `}
         >
           {children}
