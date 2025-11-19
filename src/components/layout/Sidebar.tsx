@@ -1,33 +1,37 @@
 import { useState } from "react";
-import { Home, Briefcase, Clock, PieChart, Layers } from "lucide-react";
+import HomeIcon from "../../assets/Home.svg";
+import BagIcon from "../../assets/Bag.svg";
+import ChartActivityIcon from "../../assets/Chart-pie.svg";
+import ChartReports from "../../assets/Chart-pie-alt.svg";
+import BoxIcon from "../../assets/Box.svg"
 
 const navItems = [
-  { icon: Home, label: "Home", href: "/" },
-  { icon: Briefcase, label: "Projects", href: "/projects" },
-  { icon: Clock, label: "Activity", href: "/activity" },
-  { icon: PieChart, label: "Reports", href: "/reports" },
-  { icon: Layers, label: "Archive", href: "/archive" },
+  { icon: HomeIcon, label: "Home", href: "/" },
+  { icon: BagIcon, label: "Projects", href: "/projects" },
+  { icon: ChartActivityIcon, label: "Activity", href: "/activity" },
+  { icon: ChartReports, label: "Reports", href: "/reports" },
+  { icon: BoxIcon, label: "Archive", href: "/archive" },
 ];
 
 interface SidebarLinkProps {
-  icon: React.ElementType;
+  icon: string;
   isActive: boolean;
   onClick: () => void;
   label: string;
 }
 
-const SidebarLink = ({ icon: Icon, isActive, onClick, label }: SidebarLinkProps) => {
+const SidebarLink = ({ icon, isActive, onClick, label }: SidebarLinkProps) => {
   const buttonClasses = ` flex items-center justify-center transition-all duration-200 cursor-pointer text-white/90
     ${isActive
         ? "text-[#1768B3] bg-[#88C6FF66] shadow-lg rounded-full w-12 h-12 my-2" 
         : "h-12 w-12 my-2 hover:text-white/100 hover:bg-white/10 rounded-xl"
     }`;
 
-  const iconClasses = ` stroke-2 transition-all duration-200 ${isActive ? "w-7 h-7" : "w-6 h-6"}`;
+  const imgClasses = `w-6 h-6 ${isActive ? "w-7 h-7" : "w-7 h-7"} transition-all duration-200`;
 
   return (
     <button onClick={onClick} title={label} className={buttonClasses}>
-        <Icon className={iconClasses} />
+        <img src={icon} alt={label} className={imgClasses} />
     </button>
     );
 };
