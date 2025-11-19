@@ -1,11 +1,12 @@
-
+import Layout from "./components/layout/Layout";
 
 function App() {
   return (
-    <>
-    <h1 className="text-red-500 text-2xl">Hello World!</h1>
-    </>
-  )
+    <Layout>
+      <h1 className="text-2xl font-bold">Welcome!</h1>
+      <p>Ini area konten utama.</p>
+    </Layout>
+  );
 }
 
-export default App
+export default App;
