@@ -28,7 +28,7 @@ const Navbar = ({ children }: NavbarProps) => {
 
   return (
     <>
-      <header className="w-full bg-white flex items-center justify-between px-6 py-6 md:px-14 z-20 relative">
+      <header className="w-full bg-white flex items-center justify-between px-6 py-6 md:px-20 z-20 relative">
         <div>
           <img src={Logo} alt="logo" className="h-8 md:h-10" />
         </div>
@@ -40,7 +40,7 @@ const Navbar = ({ children }: NavbarProps) => {
                 key={link.id}
                 onClick={() => navigate(link.href)}
                 className={`cursor-pointer ${
-                  location.pathname === link.href ? "font-semibold text-indigo-600" : ""
+                  location.pathname === link.href ? "font-semibold text-[#1768B3]" : ""
                 }`}
               >
                 {link.label}
@@ -79,7 +79,7 @@ const Navbar = ({ children }: NavbarProps) => {
 
       <div className="flex flex-1 relative">
         <div className={`
-          fixed top-30 left-1 md:top-40 md:left-8 h-full z-50 transform transition-transform duration-300
+          fixed top-30 left-1 md:top-30 md:left-8 h-full z-50 transform transition-transform duration-300
           ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}
         `}
       >
