@@ -1,9 +1,9 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import HomeIcon from "../../assets/Home.svg";
-import BagIcon from "../../assets/Bag.svg";
-import ChartActivityIcon from "../../assets/Chart-pie.svg";
-import ChartReports from "../../assets/Chart-pie-alt.svg";
-import BoxIcon from "../../assets/Box.svg";
+import HomeIcon from "../../assets/home.svg";
+import BagIcon from "../../assets/bag.svg";
+import ChartActivityIcon from "../../assets/chart-pie.svg";
+import ChartReports from "../../assets/chart-pie-alt.svg";
+import BoxIcon from "../../assets/box.svg";
 
 const navItems = [
   { icon: HomeIcon, label: "Home", href: "/" },
